@@ -1,5 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
+import PhoneInput from '@/components/phoneInput';
+import EmailInput from '@/components/emailInput';
+import { useState } from 'react';
 
 type User = {
   firstName: string;
@@ -21,32 +24,25 @@ export default function Contact({
   updateUserProperties,
   userData,
 }: ContactProps) {
-  const validateContactEmail = (value: string) => {};
-  const validateContactPhone = (value: string) => {};
+  const [isEmailValid, setIsEmailValid] = useState(false);
+  const [isPhoneValid, setIsPhoneValid] = useState(false);
 
   return (
     <>
       <form onSubmit={(e) => updateUserProperties(e, 'salary')}>
-        <label htmlFor='email'>Email:</label>
-        <input
-          required
-          type='email'
-          id='email'
-          name='email'
-          defaultValue={userData.email}
-          onChange={(e) => validateContactEmail(e.target.value)}
+        <EmailInput
+          setIsEmailValid={setIsEmailValid}
+          isEmailValid={isEmailValid}
+          userEmail={userData.email}
         />
-        <label htmlFor='phone'>Phone Number:</label>
-        <input
-          type='tel'
-          id='phone'
-          name='phone'
-          defaultValue={userData.phone}
-          onChange={(e) => validateContactPhone(e.target.value)}
+        <PhoneInput
+          setIsPhoneValid={setIsPhoneValid}
+          isPhoneValid={isPhoneValid}
+          userPhone={userData.phone}
         />
         <button>next</button>
       </form>
-      <Link href='/'>back</Link>
+      <Link href='/name'>name</Link>
     </>
   );
 }
