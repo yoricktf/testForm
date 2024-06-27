@@ -1,8 +1,6 @@
 import Head from 'next/head';
-import Image from 'next/image';
 import { Inter } from 'next/font/google';
 import styles from '@/styles/Home.module.css';
-import Link from 'next/link';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -15,15 +13,15 @@ type User = {
 };
 
 interface HomeProps {
-  setUserData: (userData: User[]) => void;
   userData: User;
+  updateUserProperties: (
+    e: React.FormEvent<HTMLFormElement>,
+    nextpage: string
+  ) => void;
 }
 
-export default function Home({ userData, setUserData }: HomeProps) {
-  function updateUserName(property: string, value: string) {
-    const updatedUserObject = { ...userData, [property]: value };
-    setUserData([updatedUserObject]);
-  }
+export default function Home({ updateUserProperties, userData }: HomeProps) {
+  function validateUserName(value: string) {}
 
   return (
     <>
@@ -40,14 +38,14 @@ export default function Home({ userData, setUserData }: HomeProps) {
           with being a landlord. That&apos;s more time for you. Let&apos;s get
           started with some easy questions.
         </p>
-        <form>
+        <form onSubmit={(e) => updateUserProperties(e, 'contact')}>
           <label htmlFor='firstName'>First Name:</label>
           <input
             type='text'
             id='firstName'
             name='firstName'
             defaultValue={userData.firstName}
-            onChange={(e) => updateUserName('firstName', e.target.value)}
+            onChange={(e) => validateUserName(e.target.value)}
           />
           <label htmlFor='lastName'>Last Name:</label>
           <input
@@ -55,10 +53,10 @@ export default function Home({ userData, setUserData }: HomeProps) {
             id='lastName'
             name='lastName'
             defaultValue={userData.lastName}
-            onChange={(e) => updateUserName('lastName', e.target.value)}
+            onChange={(e) => validateUserName(e.target.value)}
           />
+          <button>next</button>
         </form>
-        <Link href='/contact'>Next Question!</Link>
       </main>
     </>
   );

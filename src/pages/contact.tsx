@@ -1,19 +1,32 @@
 import React from 'react';
 import Link from 'next/link';
 
-export default function contact({ updateUser, userData, setUserData }: any) {
-  const updateContactEmail = (property: string, value: string) => {
-    const updatedUserObject = { ...userData, [property]: value };
-    setUserData([updatedUserObject]);
-  };
-  const updateContactPhone = (property: string, value: string) => {
-    const updatedUserObject = { ...userData, [property]: value };
-    setUserData([updatedUserObject]);
-  };
+type User = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: number;
+  salary: string;
+};
+
+interface ContactProps {
+  userData: User;
+  updateUserProperties: (
+    e: React.FormEvent<HTMLFormElement>,
+    nextpage: string
+  ) => void;
+}
+
+export default function Contact({
+  updateUserProperties,
+  userData,
+}: ContactProps) {
+  const validateContactEmail = (value: string) => {};
+  const validateContactPhone = (value: string) => {};
 
   return (
     <>
-      <form>
+      <form onSubmit={(e) => updateUserProperties(e, 'salary')}>
         <label htmlFor='email'>Email:</label>
         <input
           required
@@ -21,7 +34,7 @@ export default function contact({ updateUser, userData, setUserData }: any) {
           id='email'
           name='email'
           defaultValue={userData.email}
-          onChange={(e) => updateContactEmail('email', e.target.value)}
+          onChange={(e) => validateContactEmail(e.target.value)}
         />
         <label htmlFor='phone'>Phone Number:</label>
         <input
@@ -29,10 +42,11 @@ export default function contact({ updateUser, userData, setUserData }: any) {
           id='phone'
           name='phone'
           defaultValue={userData.phone}
-          onChange={(e) => updateContactPhone('phone', e.target.value)}
+          onChange={(e) => validateContactPhone(e.target.value)}
         />
+        <button>next</button>
       </form>
-      <Link href='/salary'>Next Page</Link>
+      <Link href='/'>back</Link>
     </>
   );
 }
