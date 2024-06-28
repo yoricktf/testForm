@@ -4,6 +4,7 @@ export default function EmailInput({
   userEmail,
   isEmailValid,
   setIsEmailValid,
+  disabled = false,
 }: any) {
   const validateContactEmail = (value: string) => {
     const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
@@ -25,6 +26,7 @@ export default function EmailInput({
         defaultValue={userEmail}
         onChange={(e) => validateContactEmail(e.target.value)}
         className={isEmailValid ? 'valid' : 'invalid'}
+        disabled={disabled}
       />
     </>
   );

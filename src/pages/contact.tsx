@@ -25,8 +25,8 @@ export default function Contact({
   updateUserProperties,
   userData,
 }: ContactProps) {
-  const [isEmailValid, setIsEmailValid] = useState(false);
-  const [isPhoneValid, setIsPhoneValid] = useState(false);
+  const [isEmailValid, setIsEmailValid] = useState(true);
+  const [isPhoneValid, setIsPhoneValid] = useState(true);
 
   return (
     <>

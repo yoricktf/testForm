@@ -4,6 +4,7 @@ export default function PhoneInput({
   userPhone,
   isPhoneValid,
   setIsPhoneValid,
+  disabled = false,
 }: any) {
   const validateContactPhone = (value: string) => {
     const germanPhoneRegex =
@@ -25,6 +26,7 @@ export default function PhoneInput({
         defaultValue={userPhone}
         onChange={(e) => validateContactPhone(e.target.value)}
         className={isPhoneValid ? 'valid' : 'invalid'}
+        disabled={disabled}
       />
     </>
   );

@@ -1,5 +1,9 @@
 import { useRouter } from 'next/router';
+import { useState } from 'react';
 import ProgressBar from '@/components/progressBar';
+import NameInput from '@/components/nameInput';
+import EmailInput from '@/components/emailInput';
+import PhoneInput from '@/components/phoneInput';
 
 type User = {
   firstName: string;
@@ -10,11 +14,19 @@ type User = {
 };
 
 export default function Summary({ userData }: { userData: User }) {
+  const [isFirstNameValid, setIsFirstNameValid] = useState(true);
+  const [isLastNameValid, setIsLastNameValid] = useState(true);
+  const [isEmailValid, setIsEmailValid] = useState(true);
+  const [isPhoneValid, setIsPhoneValid] = useState(true);
   const router = useRouter();
 
   function userSubmission(e: any) {
     e.preventDefault();
-    if (confirm('Thank you for your submission')) {
+    if (
+      confirm(
+        'Thank you for your submission, we have everything we need to get started, feel free to look around our home page for more information.'
+      )
+    ) {
       router.push('/');
     }
   }
@@ -29,36 +41,30 @@ export default function Summary({ userData }: { userData: User }) {
       </p>
       <ProgressBar progress={95} />
       <form onSubmit={userSubmission}>
-        <label htmlFor='firstName'>First Name:</label>
-        <input
-          type='text'
-          id='firstName'
-          name='firstName'
-          value={userData.firstName}
+        <NameInput
+          nameType='firstName'
+          userName={userData.firstName}
+          isNameValid={isFirstNameValid}
+          setIsNameValid={setIsFirstNameValid}
           disabled
         />
-        <label htmlFor='lastName'>Last Name:</label>
-        <input
-          type='text'
-          id='lastName'
-          name='lastName'
-          value={userData.lastName}
+        <NameInput
+          nameType='lastName'
+          userName={userData.lastName}
+          isNameValid={isLastNameValid}
+          setIsNameValid={setIsLastNameValid}
           disabled
         />
-        <label htmlFor='email'>Email:</label>
-        <input
-          type='email'
-          id='email'
-          name='email'
-          value={userData.email}
+        <EmailInput
+          setIsEmailValid={setIsEmailValid}
+          isEmailValid={isEmailValid}
+          userEmail={userData.email}
           disabled
         />
-        <label htmlFor='phone'>Phone Number:</label>
-        <input
-          type='tel'
-          id='phone'
-          name='phone'
-          value={userData.phone}
+        <PhoneInput
+          setIsPhoneValid={setIsPhoneValid}
+          isPhoneValid={isPhoneValid}
+          userPhone={userData.phone}
           disabled
         />
         <label htmlFor='salary'>Salary:</label>

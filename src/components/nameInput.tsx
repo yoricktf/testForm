@@ -5,6 +5,7 @@ export default function NameInput({
   nameType,
   setIsNameValid,
   isNameValid,
+  disabled = false,
 }: any) {
   function validateUserName(value: string) {
     const nameRegex = /^[a-z ,.'-]+$/i;
@@ -25,6 +26,7 @@ export default function NameInput({
         defaultValue={userName}
         onChange={(e) => validateUserName(e.target.value)}
         className={isNameValid ? 'valid' : 'invalid'}
+        disabled={disabled}
       />
     </>
   );
