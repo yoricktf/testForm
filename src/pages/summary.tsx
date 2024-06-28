@@ -13,7 +13,12 @@ type User = {
   salary: string;
 };
 
-export default function Summary({ userData }: { userData: User }) {
+interface SummaryProps {
+  userData: User;
+  links: string[];
+}
+
+export default function Summary({ userData, links }: SummaryProps) {
   const [isFirstNameValid, setIsFirstNameValid] = useState(true);
   const [isLastNameValid, setIsLastNameValid] = useState(true);
   const [isEmailValid, setIsEmailValid] = useState(true);
@@ -39,7 +44,7 @@ export default function Summary({ userData }: { userData: User }) {
         information. Please take a moment to double check it now to make sure
         there are no mistakes.
       </p>
-      <ProgressBar progress={95} />
+      <ProgressBar progress={100} links={links} />
       <form onSubmit={userSubmission}>
         <NameInput
           nameType='firstName'

@@ -2,6 +2,8 @@ import '@/styles/globals.css';
 import type { AppProps } from 'next/app';
 import useLocalStorageState from 'use-local-storage-state';
 import { useRouter } from 'next/router';
+import { Inter } from 'next/font/google';
+const inter = Inter({ subsets: ['latin'] });
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -16,6 +18,8 @@ export default function App({ Component, pageProps }: AppProps) {
       },
     ],
   });
+
+  const links = ['/name', '/contact', '/salary', '/summary'];
 
   function updateUserProperties(
     e: React.FormEvent<HTMLFormElement>,
@@ -36,10 +40,13 @@ export default function App({ Component, pageProps }: AppProps) {
   }
 
   return (
-    <Component
-      {...pageProps}
-      userData={userData[0]}
-      updateUserProperties={updateUserProperties}
-    />
+    <main className={` ${inter.className}`}>
+      <Component
+        {...pageProps}
+        userData={userData[0]}
+        updateUserProperties={updateUserProperties}
+        links={links}
+      />
+    </main>
   );
 }

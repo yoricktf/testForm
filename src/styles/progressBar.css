@@ -1,0 +1,49 @@
+.progress-bar-wrapper {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 1200px;
+  width: 90%;
+  padding: 15px 10px;
+  margin: 15px auto;
+  border-radius: 5px 0 0 5px;
+}
+
+.progress-bar-container {
+  position: relative;
+  width: calc(100% - 10px);
+  background-color: #494949;
+  overflow: visible;
+  margin: 0 auto;
+}
+
+.progress-bar {
+  height: 15px;
+  background-color: rgb(250, 204, 21);
+  border-radius: 25px 0 0 25px;
+}
+
+.notches {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.notch {
+  border: 2px solid rgb(168, 168, 168);
+  position: absolute;
+  top: -5px;
+  bottom: 0;
+  width: 25px;
+  height: 25px;
+  border-radius: 50px;
+  background-color: #e8e8e8;
+  pointer-events: auto;
+  text-decoration: none;
+  padding: 5px;
+  transform: translateX(-3);
+}

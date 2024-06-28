@@ -15,6 +15,7 @@ type User = {
 
 interface ContactProps {
   userData: User;
+  links: string[];
   updateUserProperties: (
     e: React.FormEvent<HTMLFormElement>,
     nextpage: string
@@ -24,13 +25,14 @@ interface ContactProps {
 export default function Contact({
   updateUserProperties,
   userData,
+  links,
 }: ContactProps) {
   const [isEmailValid, setIsEmailValid] = useState(true);
   const [isPhoneValid, setIsPhoneValid] = useState(true);
 
   return (
     <>
-      <ProgressBar progress={50} />
+      <ProgressBar progress={33} links={links} />
       <form onSubmit={(e) => updateUserProperties(e, 'salary')}>
         <EmailInput
           setIsEmailValid={setIsEmailValid}

@@ -12,18 +12,23 @@ type User = {
 
 interface HomeProps {
   userData: User;
+  links: string[];
   updateUserProperties: (
     e: React.FormEvent<HTMLFormElement>,
     nextpage: string
   ) => void;
 }
 
-export default function Home({ updateUserProperties, userData }: HomeProps) {
+export default function Home({
+  updateUserProperties,
+  userData,
+  links,
+}: HomeProps) {
   const [isFirstNameValid, setIsFirstNameValid] = useState(true);
   const [isLastNameValid, setIsLastNameValid] = useState(true);
   return (
     <>
-      <ProgressBar progress={25} />
+      <ProgressBar progress={0} links={links} />
       <form onSubmit={(e) => updateUserProperties(e, 'contact')}>
         <NameInput
           nameType='firstName'

@@ -11,6 +11,7 @@ type User = {
 
 interface SalaryProps {
   userData: User;
+  links: string[];
   updateUserProperties: (
     e: React.FormEvent<HTMLFormElement>,
     nextpage: string
@@ -19,10 +20,11 @@ interface SalaryProps {
 export default function Salary({
   updateUserProperties,
   userData,
+  links,
 }: SalaryProps) {
   return (
     <>
-      <ProgressBar progress={75} />
+      <ProgressBar progress={66} links={links} />
       <form onSubmit={(e) => updateUserProperties(e, 'summary')}>
         <input
           type='radio'
