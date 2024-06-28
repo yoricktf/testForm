@@ -1,3 +1,6 @@
+import { useState } from 'react';
+import NameInput from '@/components/nameInput';
+
 type User = {
   firstName: string;
   lastName: string;
@@ -15,28 +18,24 @@ interface HomeProps {
 }
 
 export default function Home({ updateUserProperties, userData }: HomeProps) {
-  function validateUserName(value: string) {}
-
+  const [isFirstNameValid, setIsFirstNameValid] = useState(true);
+  const [isLastNameValid, setIsLastNameValid] = useState(true);
   return (
     <>
       <form onSubmit={(e) => updateUserProperties(e, 'contact')}>
-        <label htmlFor='firstName'>First Name:</label>
-        <input
-          type='text'
-          id='firstName'
-          name='firstName'
-          defaultValue={userData.firstName}
-          onChange={(e) => validateUserName(e.target.value)}
+        <NameInput
+          nameType='firstName'
+          userName={userData.firstName}
+          isNameValid={isFirstNameValid}
+          setIsNameValid={setIsFirstNameValid}
         />
-        <label htmlFor='lastName'>Last Name:</label>
-        <input
-          type='text'
-          id='lastName'
-          name='lastName'
-          defaultValue={userData.lastName}
-          onChange={(e) => validateUserName(e.target.value)}
+        <NameInput
+          nameType='lastName'
+          userName={userData.lastName}
+          isNameValid={isLastNameValid}
+          setIsNameValid={setIsLastNameValid}
         />
-        <button>next</button>
+        <button disabled={!isFirstNameValid || !isLastNameValid}>next</button>
       </form>
     </>
   );
