@@ -3,6 +3,7 @@ import Link from 'next/link';
 import PhoneInput from '@/components/phoneInput';
 import EmailInput from '@/components/emailInput';
 import { useState } from 'react';
+import ProgressBar from '@/components/progressBar';
 
 type User = {
   firstName: string;
@@ -29,6 +30,7 @@ export default function Contact({
 
   return (
     <>
+      <ProgressBar progress={50} />
       <form onSubmit={(e) => updateUserProperties(e, 'salary')}>
         <EmailInput
           setIsEmailValid={setIsEmailValid}

@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router';
+import ProgressBar from '@/components/progressBar';
 
 type User = {
   firstName: string;
@@ -26,6 +27,7 @@ export default function Summary({ userData }: { userData: User }) {
         information. Please take a moment to double check it now to make sure
         there are no mistakes.
       </p>
+      <ProgressBar progress={95} />
       <form onSubmit={userSubmission}>
         <label htmlFor='firstName'>First Name:</label>
         <input

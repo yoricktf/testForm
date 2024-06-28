@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import NameInput from '@/components/nameInput';
+import ProgressBar from '@/components/progressBar';
 
 type User = {
   firstName: string;
@@ -22,6 +23,7 @@ export default function Home({ updateUserProperties, userData }: HomeProps) {
   const [isLastNameValid, setIsLastNameValid] = useState(true);
   return (
     <>
+      <ProgressBar progress={25} />
       <form onSubmit={(e) => updateUserProperties(e, 'contact')}>
         <NameInput
           nameType='firstName'

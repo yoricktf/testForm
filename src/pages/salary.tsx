@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import ProgressBar from '@/components/progressBar';
 
 type User = {
   firstName: string;
@@ -21,6 +22,7 @@ export default function Salary({
 }: SalaryProps) {
   return (
     <>
+      <ProgressBar progress={75} />
       <form onSubmit={(e) => updateUserProperties(e, 'summary')}>
         <input
           type='radio'
