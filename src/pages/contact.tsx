@@ -40,7 +40,7 @@ export default function Contact({
           isPhoneValid={isPhoneValid}
           userPhone={userData.phone}
         />
-        <button>next</button>
+        <button disabled={!isEmailValid || !isPhoneValid}>next</button>
       </form>
       <Link href='/name'>name</Link>
     </>

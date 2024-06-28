@@ -24,6 +24,13 @@ export default function App({ Component, pageProps }: AppProps) {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const productData = Object.fromEntries(formData);
+    for (const property in productData) {
+      const value = productData[property];
+
+      if (typeof value === 'string') {
+        productData[property] = value.trim();
+      }
+    }
     setUserData([{ ...userData[0], ...productData }]);
     router.push(nextpage);
   }
