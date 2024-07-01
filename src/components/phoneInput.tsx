@@ -1,11 +1,18 @@
 import { useEffect } from 'react';
 
+type PhoneInputProps = {
+  userPhone: string;
+  isPhoneValid: boolean;
+  setIsPhoneValid: React.Dispatch<React.SetStateAction<boolean>>;
+  disabled?: boolean;
+};
+
 export default function PhoneInput({
   userPhone,
   isPhoneValid,
   setIsPhoneValid,
   disabled = false,
-}: any) {
+}: PhoneInputProps) {
   const validateContactPhone = (value: string) => {
     const germanPhoneRegex =
       /^(0|0049\s?|\+49\s?|\(\+49\)\s?)([1-9][0-9]{1,4})([\s\-\/]?[0-9]{3,10})$/g;
