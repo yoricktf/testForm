@@ -1,28 +1,9 @@
 import Head from 'next/head';
-import { Inter } from 'next/font/google';
-import styles from '@/styles/Home.module.css';
 import Link from 'next/link';
 
-const inter = Inter({ subsets: ['latin'] });
-
-type User = {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: number;
-  salary: string;
-};
-
-interface HomeProps {
-  userData: User;
-  updateUserProperties: (
-    e: React.FormEvent<HTMLFormElement>,
-    nextpage: string
-  ) => void;
-}
-
-export default function Home({ updateUserProperties, userData }: HomeProps) {
-  function validateUserName(value: string) {}
+export default function Home() {
+  const videoUrl =
+    'https://framerusercontent.com/assets/375wnZVxAp3GMWD38xzYEjS8Sc.mp4';
 
   return (
     <>
@@ -32,14 +13,79 @@ export default function Home({ updateUserProperties, userData }: HomeProps) {
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <main className={`${styles.main} ${inter.className}`}>
-        <h1>welcome to Buena</h1>
+
+      <section className='banner'>
+        <div>
+          <h1>Buena</h1>
+          <h2>Property management as it should be</h2>
+        </div>
         <p>
           Buena cares for your apartments, tenants, and every task that comes
           with being a landlord. That&apos;s more time for you. Let&apos;s get
           started with some easy questions.
         </p>
-        <Link href='/name'>Get Started!</Link>
+      </section>
+      <Link className='linkButton getStarted' href='/name'>
+        Get Started
+      </Link>
+      <Link className='linkButton getStarted' href='#detailsSection'>
+        More Information
+      </Link>
+
+      <div className='video-player'>
+        <video
+          autoPlay
+          loop
+          muted
+          style={{
+            height: 'auto',
+          }}
+        >
+          <source src={videoUrl} type='video/mp4' className='video' />
+          Your browser does not support the video tag.
+        </video>
+        <div className='shadow'></div>
+      </div>
+
+      <main>
+        <article id='detailsSection'>
+          <h2>Reinventing Renting</h2>
+          <p>
+            Owning property or living in a rental apartment affects the majority
+            of our society, whether as landlords or tenants, as a financial
+            investment or as a first home. Property ownership has always been a
+            proven way to invest in your retirement. However, ownership also
+            comes with responsibilities. Owners must be well-versed in many new
+            areas to stay on top of things. Renting requires appealing photos,
+            detailed advertisements, handling inquiries, organizing viewings,
+            evaluating applications, creating rental agreements, complying with
+            regulations, monitoring payments, and preparing utility cost
+            statements. All of this must be repeated for each new tenant.
+          </p>
+          <br />
+          <p>
+            Thus, property ownership quickly becomes time-consuming, opaque, and
+            costly, and landlords forget why they decided to buy an apartment in
+            the first place: to invest money. But for tenants searching for a
+            new apartment, there are also many challenges and lack of
+            transparency. The housing market is often characterized by high
+            demand, and tenants must compete for their dream apartment. Whether
+            its moving to a new city, searching for a new home for the family,
+            or taking the step of moving in with a partner - these are
+            significant life events that unfortunately are often accompanied by
+            stress and worries.
+          </p>
+          <br />
+          <p>
+            Owners are looking for a convenient solution and a reliable partner
+            for renting and managing their properties. Tenants wish to quickly
+            and easily find their affordable dream apartment and a partner who
+            genuinely addresses their problems. Buena is the solution for owners
+            and tenants. Buena takes on all responsibilities from the owners and
+            enables tenants to quickly and easily find, visit, and finally start
+            living in their new home.
+          </p>
+        </article>
       </main>
     </>
   );

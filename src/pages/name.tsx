@@ -29,6 +29,8 @@ export default function Home({
   return (
     <>
       <ProgressBar progress={0} links={links} />
+      <h2 className='formTitle'>Enter Your Name</h2>
+      <p className='disclaimer'>Please enter the name you use on your deed.</p>
       <form onSubmit={(e) => updateUserProperties(e, 'contact')}>
         <NameInput
           nameType='firstName'

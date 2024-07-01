@@ -33,6 +33,11 @@ export default function Contact({
   return (
     <>
       <ProgressBar progress={33} links={links} />
+      <h2 className='formTitle'>Enter Your Contact Details</h2>
+      <p className='disclaimer'>
+        we currently only accept German phone numbers
+      </p>
+
       <form onSubmit={(e) => updateUserProperties(e, 'salary')}>
         <EmailInput
           setIsEmailValid={setIsEmailValid}
@@ -46,7 +51,6 @@ export default function Contact({
         />
         <button disabled={!isEmailValid || !isPhoneValid}>next</button>
       </form>
-      <Link href='/name'>name</Link>
     </>
   );
 }

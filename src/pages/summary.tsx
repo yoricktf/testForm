@@ -38,8 +38,8 @@ export default function Summary({ userData, links }: SummaryProps) {
 
   return (
     <>
-      <h1>Summary</h1>
-      <p>
+      <h1 className='formTitle'>Summary</h1>
+      <p className='disclaimer'>
         Thank you {userData.firstName} for taking the time to give us your
         information. Please take a moment to double check it now to make sure
         there are no mistakes.
