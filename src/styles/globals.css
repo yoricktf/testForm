@@ -15,7 +15,9 @@ body {
   overflow-x: hidden;
 }
 
-main {
+.main {
+  width: 100vw;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -60,10 +62,4 @@ h2 {
   font-size: 2rem;
   font-weight: 200;
   line-height: 0.92;
-}
-
-main {
-  width: 100vw;
-  max-width: 1200px;
-  margin: 0 auto;
 }

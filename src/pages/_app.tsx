@@ -10,10 +10,10 @@ export default function App({ Component, pageProps }: AppProps) {
   const [userData, setUserData] = useLocalStorageState('userData', {
     defaultValue: [
       {
-        firstName: 'helllo',
-        lastName: 'lastname',
-        email: 'email',
-        phone: +4915212345678,
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '+49',
         salary: '0-1000',
       },
     ],
@@ -40,13 +40,13 @@ export default function App({ Component, pageProps }: AppProps) {
   }
 
   return (
-    <main className={` ${inter.className}`}>
+    <div className={` ${inter.className} main`}>
       <Component
         {...pageProps}
         userData={userData[0]}
         updateUserProperties={updateUserProperties}
         links={links}
       />
-    </main>
+    </div>
   );
 }
