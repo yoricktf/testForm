@@ -28,9 +28,10 @@ main {
 button {
   padding: 10px;
   width: 250px;
-  margin: 0 auto;
+  margin: 10px auto;
   border: none;
   border-radius: 10px;
+  transition: all 0.3s ease-in-out;
 }
 
 .linkButton {
@@ -40,6 +41,13 @@ button {
   padding: 15px;
   margin: 10px;
   border-radius: 100px;
+}
+
+button:hover {
+  background-color: rgb(250, 204, 21);
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  color: black;
 }
 
 h1 {
