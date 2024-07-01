@@ -9,7 +9,7 @@ type User = {
   firstName: string;
   lastName: string;
   email: string;
-  phone: number;
+  phone: string;
   salary: string;
 };
 
@@ -27,6 +27,7 @@ export default function Summary({ userData, links }: SummaryProps) {
 
   function userSubmission(e: any) {
     e.preventDefault();
+    console.log(userData);
     if (
       confirm(
         'Thank you for your submission, we have everything we need to get started, feel free to look around our home page for more information.'
@@ -80,7 +81,22 @@ export default function Summary({ userData, links }: SummaryProps) {
           value={userData.salary}
           disabled
         />
-        <button>Looks Good!</button>
+        {!isFirstNameValid ||
+        !isLastNameValid ||
+        !isEmailValid ||
+        !isPhoneValid ? (
+          <p className='error'>Please Correct all required fields</p>
+        ) : null}
+        <button
+          disabled={
+            !isFirstNameValid ||
+            !isLastNameValid ||
+            !isEmailValid ||
+            !isPhoneValid
+          }
+        >
+          Looks Good!
+        </button>
       </form>
     </>
   );
